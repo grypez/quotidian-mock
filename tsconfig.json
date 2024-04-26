@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "target": "es2018",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "declaration": false
+
+    // ...
+  },
+  "ts-node": {
+    "files": true // only if you have "files", "include" or "exclude" in your config
+  },
+  "include": ["./src/**/*.ts", "jest.config.ts"],
+  "exclude": ["./node_modules/**/*"]
+}
