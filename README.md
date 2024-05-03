@@ -1,6 +1,18 @@
 # quotidian-mock
 A tabulated subset of the quotidian API, intended for use in integration tests and CI jobs.
 
+### Installation
+
+```bash
+yarn install
+```
+
+### Testing
+
+```bash
+yarn test
+```
+
 ### API
 ```ts
 import { Client } from "quotidian-mock";
