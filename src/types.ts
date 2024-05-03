@@ -13,6 +13,7 @@ export type Endpoint =
   ;
 
 export type AsyncFunc = (...args: any) => Promise<any>;
+export type ParamArray<F extends AsyncFunc> = Array<Parameters<F>>;
 export type Applicable<F extends AsyncFunc> = { endpoint: F, params: Parameters<F> }
 export type Mock =
   | Applicable<FetchCommitment>

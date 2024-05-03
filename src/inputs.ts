@@ -1,42 +1,13 @@
-import { AsyncFunc, FetchCommitment, FetchCommitments, FetchCitation } from "./types";
 import { Client } from "./client";
+import { scenes, parseScene } from "./fixtures";
 
-type ParamArray<F extends AsyncFunc> = Array<Parameters<F>>;
+const parsedScenes = Object.keys(scenes).flatMap(
+  key => parseScene(scenes[key])
+);
 
-const fetchCommitment: ParamArray<FetchCommitment> = [
-  [{
-    content: "someline",
-    seed: BigInt(33),
-  }],
-
-]
-
-const fetchCommitments: ParamArray<FetchCommitments> = [
-  [
-    ["some", "lines"],
-    BigInt(3030),
-  ],
-
-]
-
-const fetchCitation: ParamArray<FetchCitation> = [
-  [
-    {
-      content: "some lines are bigger than others",
-      seed: BigInt(44),
-    },
-    {
-      content: "always drawing some lines in the sand",
-      seed: BigInt(22),
-    },
-    {
-      rootWord: 0,
-      branchWord: 2,
-      length: 2,
-    }
-  ],
-
-];
+const fetchCommitment = parsedScenes.flatMap(args => args.commitment);
+const fetchCommitments = parsedScenes.flatMap(args => args.commitments);
+const fetchCitation = parsedScenes.flatMap(args => args.citations);
 
 const mocks = {
   fetchCommitment:  fetchCommitment.map(params => ({ endpoint: Client.prototype.fetchCommitment, params: params})),
