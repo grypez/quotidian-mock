@@ -22,13 +22,13 @@ export type Mock =
 
 // would like to assert the value type dependent on the key type
 // but this containing union type will have to do
-export type MockMap = Map<Endpoint, Map<ArgHash, ReturnType<Endpoint>>>;
+export type MockMap = Map<Endpoint["name"], [Endpoint, Map<ArgHash, ReturnType<Endpoint>>]>;
 
 export type Seed = bigint;
 export type Hash = bigint;
 
 type Digit = 0|1|2|3|4|5|6|7|8|9;
-type Tuple<T, N extends Digit> =
+export type Tuple<T, N extends Digit> =
   N extends 0 ? [] :
   N extends 1 ? [T] :
   N extends 2 ? [T, T] :
